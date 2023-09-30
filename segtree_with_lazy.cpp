@@ -61,12 +61,16 @@ struct segmentTree{
         if (!prop) return;
         combine(lazy, val);
         prop = false;
-        if (low == high) return;
+        if (low == high){
+            lazy = idt_l;
+            return;
+        }
         left->prop = right->prop = true;
         join_lazy( lazy, left->lazy);
         left->lazy = join_res_l;
         join_lazy(lazy, right->lazy);
         right->lazy = join_res_l;
+        lazy = idt_l;
     }
 
     segmentTree(int l, int h, bool bl = true){
