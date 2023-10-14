@@ -1,3 +1,7 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
 struct wavelet_tree{
     int low, high, mid, cnt, only;
     bool leaf;
@@ -67,4 +71,21 @@ struct wavelet_tree{
             return right->quantile(k - c, (*mapRight)[i - 1] + 1, (*mapRight)[j]);
         }
     }
+
+    int range(int x, int y, int i, int j){
+        if (low > y || high < x) return 0;
+        if (leaf) {
+            return (only <= y && only >= x);
+        }
+
+        if (low >= x && high <= y) return j - i + 1;
+        return left->range(x, y, (*mapLeft)[i - 1] + 1, (*mapLeft)[j]) + right->range(x, y, (*mapRight)[i - 1] + 1, (*mapRight)[j]);
+    }
 };
+
+int main(){
+    ios::sync_with_stdio(false), cin.tie(nullptr);
+
+    
+    return 0;
+}
