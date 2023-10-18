@@ -82,10 +82,3 @@ struct wavelet_tree{
         return left->range(x, y, (*mapLeft)[i - 1] + 1, (*mapLeft)[j]) + right->range(x, y, (*mapRight)[i - 1] + 1, (*mapRight)[j]);
     }
 };
-
-int main(){
-    ios::sync_with_stdio(false), cin.tie(nullptr);
-
-    
-    return 0;
-}
